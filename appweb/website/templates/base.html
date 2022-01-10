@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/static/stylesheet.css">
+    <title>{%block title%}Home{%endblock%}</title>
+  </head>
+
+  <body>
+  <div class="form">
+        <h2>Fitness Plan</h2>
+                         {% with messages = get_flashed_messages (with_categories= true) %}
+        {% if messages %}
+            {%for category, message in messages %}
+                    {% if category == 'error' %}
+                <p class="errore">{{message}}</p>
+                        {%else%}
+                <p class="successo">{{message}}</p>
+                    {%endif%}
+            {%endfor%}
+        {%endif%}
+      {%endwith%}
+      <nav class="navbar">
+        <a class="nav-item nav-link" id="login" href="/login">Accedi</a>
+        <a class="nav-item nav-link" id="signup" href="/sign-up">Registrati</a>
+      </nav>
+      {%block content%}{%endblock%}
+  </div>
+  </body>
+
+</html>
